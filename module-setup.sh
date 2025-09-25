@@ -11,8 +11,6 @@ install() {
 
     # very-early: ensure VHD attached before dracut resolves root=
     inst_hook initqueue 01 "$moddir/vhdattach-initqueue.sh"
-    # fallback pre-mount for environments preferring pre-mount hook
-    inst_hook pre-mount 05 "$moddir/vhdattach-early.sh"
     # pre-pivot: update /etc/fstab in final root
     inst_hook pre-pivot 90 "$moddir/fstab-overlay.sh"
 
