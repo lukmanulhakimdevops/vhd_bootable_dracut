@@ -1,4 +1,4 @@
-This version is **production-ready**, written for **Dracut 108+**, **GRUB 2.12+**, and **UEFI systems**, using only **kernel-level VHD attach** (`ntfs3`, `loop`, `partprobe`) — **no FUSE**, **no vdfuse**.
+This version is **production-ready**, written for **ubuntu 25.10** **Dracut 108+**, **GRUB 2.12+**, and **UEFI systems**, using only **kernel-level VHD attach** (`ntfs3`, `loop`, `partprobe`) — **no FUSE**, **no vdfuse**.
 All logs go to `/run/initramfs/vhd.log`.
 
 ---
