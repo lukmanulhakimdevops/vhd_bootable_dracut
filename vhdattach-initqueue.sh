@@ -3,6 +3,7 @@
 # vhdattach-initqueue.sh
 # Stage: initqueue/settled (Dracut 108)
 # Purpose: Verify loop device partitions exist before root mount
+# Author : Lukmanul Hakim  (https://www.linkedin.com/in/lukmanulhakimdevops)
 # ============================================================
 
 LOG="/run/initramfs/vhd.log"
