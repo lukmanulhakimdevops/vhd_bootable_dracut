@@ -1,6 +1,7 @@
 #!/bin/bash
 # ============================================================
 # Dracut 108+ module-setup.sh
+# Author : Lukmanul Hakim  (https://www.linkedin.com/in/lukmanulhakimdevops)
 # ============================================================
 
 check() { return 0; }
