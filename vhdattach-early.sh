@@ -2,6 +2,7 @@
 # ============================================================
 # vhdattach-early.sh
 # Stage: pre-mount (Dracut 108)
+# Author : Lukmanul Hakim  (https://www.linkedin.com/in/lukmanulhakimdevops)
 # ============================================================
 
 set -e
