@@ -304,5 +304,56 @@ menuentry "Ubuntu from VHD (Native Loopboot)" {
 5. `loopback loop0 ($hostdisk)/ubuntu.vhd` works successfully in GRUB.
 
 ---
+## 📂 EFI Boot Loader Structure (Windows + Ubuntu VHD)
+
+On a typical UEFI dual-boot setup, your EFI partition (FAT32, usually `/dev/sda1`) will look like this:
+
+```
+/EFI/
+├── Microsoft/
+│   ├── Boot/
+│   │   ├── bootmgfw.efi
+│   │   └── BCD
+│   └── ...
+├── UbuntuVHD/
+│   ├── grubx64.efi
+│   └── grub.cfg   ← this is our configuration file
+└── Boot/
+    └── bootx64.efi (UEFI fallback)
+```
+
+You can create a new BCD entry via PowerShell:
+
+```powershell
+bcdedit /create /d "Ubuntu from VHD" /application BOOTSECTOR
+```
+
+or using **EasyUEFI**, then set its path to:
+
+```
+\EFI\UbuntuVHD\grubx64.efi
+```
+
+---
+on Windows PowerShell (as Administrator):
+
+```powershell
+bcdedit /copy {bootmgr} /d "Ubuntu from VHD"
+bcdedit /set {new-guid} path \EFI\UbuntuVHD\grubx64.efi
+```
+
+---
+
+## ✅ Final Result
+
+At boot time:
+
+* Windows Boot Manager → choose **“Ubuntu from VHD”**
+* GRUB EFI (`\EFI\UbuntuVHD\grubx64.efi`) loads `.vhd` from NTFS
+* Kernel attaches `.vhd` via Dracut `vhdattach`
+* Root filesystem (`/`) mounts from inside the VHD
+
+Result: **True native Ubuntu boot** directly from a `.vhd` stored on Windows — single EFI, single disk, zero virtualization.
+Perfect for hybrid DevOps workflows and portable Linux environments.
 
 This setup gives you a **fully native Linux boot directly from a `.vhd` file** stored on a Windows NTFS partition — **fast**, **clean**, and **debug-friendly**.
