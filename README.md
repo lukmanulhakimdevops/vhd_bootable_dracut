@@ -12,7 +12,27 @@ All logs go to `/run/initramfs/vhd.log`.
 ├── vhdattach-initqueue.sh
 └── 90-vhdattach.conf
 ```
+---
 
+## 🧩 `/etc/dracut.conf.d/90-vhdattach.conf`
+
+```bash
+# 90-vhdattach.conf - dracut runtime/config for vhdattach
+hostonly="no"
+add_drivers+=" loop ntfs3 dm_mod "
+add_dracutmodules+=" vhdattach "
+dracut_log_level="debug"
+
+# Runtime tunables (override if needed)
+HOST_UUID="D8DE7C15DE7BEA60"   # UUID of NTFS host partition that contains the VHD
+VHD_REL_PATH="/ubuntu.vhd"     # path relative to NTFS root (leading slash allowed)
+HOST_MOUNTPOINT="/mnt/vhd_host"
+LOGFILE="/run/initramfs/vhd.log"
+MAX_WAIT=30
+WAIT_DELAY=1
+ROOT_PART_HINT=2               # preferred partition number for root inside VHD (used as fallback)
+
+```
 ---
 
 ## 🧩 `/usr/lib/dracut/modules.d/90vhdattach/module-setup.sh`
