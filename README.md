@@ -33,7 +33,7 @@ depends() {
 install() {
     # Essential tools to be included in initramfs
     inst_multiple \
-        losetup kpartx partx mount blkid udevadm findmnt partprobe \
+        losetup kpartx partx mount blkid udevadm findmnt partprobe date seq \
         sleep dmesg mkdir tee basename dirname cat lsblk
 
     # Kernel drivers required for NTFS and loop
