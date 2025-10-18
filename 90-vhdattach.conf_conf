@@ -1,3 +1,5 @@
+# Author : Lukmanul Hakim  (https://www.linkedin.com/in/lukmanulhakimdevops)
+
 # /etc/dracut.conf.d/90-vhdattach.conf - dracut runtime/config for vhdattach
 hostonly="no"
 add_drivers+=" loop ntfs3 dm_mod "
