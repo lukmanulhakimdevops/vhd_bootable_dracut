@@ -263,14 +263,15 @@ menuentry "Ubuntu from VHD (Native Loopboot)" {
     echo "Booting kernel from (loop0,gpt2)..."
     linux ($root)/boot/vmlinuz-6.17.0-5-generic \
         root=UUID=e846e489-b692-442c-bf30-691d1a8d0bbd \
-        rootfstype=ext4 \
+        root=UUID=e846e489-b692-442c-bf30-691d1a8d0bbd \
         ro rootwait rootdelay=5 \
         rd.auto rd.retry=3 \
+        rd.shell=1 rd.emergency=ignore \
         rd.luks=0 rd.md=0 rd.dm=0 \
         vhd.uuid=D8DE7C15DE7BEA60 \
         vhd.path=/ubuntu.vhd \
-        quiet splash loglevel=3 \
-        rd.emergency=ignore rd.shell=1
+        rd.debug \
+        quiet splash
 
     # 5️⃣ Load initramfs
     initrd ($root)/boot/initrd.img-6.17.0-5-generic
