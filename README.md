@@ -263,7 +263,6 @@ menuentry "Ubuntu from VHD (Native Loopboot)" {
     echo "Booting kernel from (loop0,gpt2)..."
     linux ($root)/boot/vmlinuz-6.17.0-5-generic \
         root=UUID=e846e489-b692-442c-bf30-691d1a8d0bbd \
-        root=UUID=e846e489-b692-442c-bf30-691d1a8d0bbd \
         ro rootwait rootdelay=5 \
         rd.auto rd.retry=3 \
         rd.shell=1 rd.emergency=ignore \
