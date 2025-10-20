@@ -15,7 +15,7 @@ install() {
     # Tools penting yang harus dibawa ke initramfs
     inst_multiple \
         losetup kpartx partx mount blkid udevadm findmnt partprobe date seq \
-        sleep dmesg mkdir tee basename dirname cat lsblk
+        sleep dmesg mkdir tee basename dirname cat lsblk grep cut head
 
     # Kernel drivers untuk NTFS & loop
     instmods loop ntfs3 dm_mod dm_snapshot
